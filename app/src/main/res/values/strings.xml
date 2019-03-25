@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">News Feed</string>
+
+    <!--Used in java files-->
+    <string name="api_default_error">Something went Wrong</string>
+    <string name="connection_error">No Internet Connection</string>
+    <string name="api_retry_error">Please try again</string>
+
+    <!--Used in xml files-->
+    <string name="testString">Hi there every one, Akash here</string>
+    <string name="view_full_article">View full article</string>
+</resources>
