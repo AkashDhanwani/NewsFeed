@@ -2,6 +2,7 @@ package com.akash.newsfeed.view_presenter.main;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.akash.newsfeed.data.DataManager;
 import com.akash.newsfeed.data.network.model_classes.ApiResponse;
@@ -77,7 +78,7 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
     }
 
     @Override
-    public void onCardClicked(Bundle bundle) {
-        getMvpView().openDetailActivity(bundle);
+    public void onCardClicked(Bundle bundle, View image, View title) {
+        getMvpView().openDetailActivity(bundle, image, title);
     }
 }

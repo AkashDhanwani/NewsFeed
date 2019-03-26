@@ -10,6 +10,7 @@
     <ImageView
         android:id="@+id/imageDetail"
         android:layout_width="match_parent"
+        android:transitionName="image"
         android:layout_height="250dp" />
     <TextView
         android:id="@+id/titleDetail"
@@ -17,6 +18,7 @@
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:textColor="@color/black_effective"
+        android:transitionName="title"
         android:text="@string/testString"
         android:textStyle="bold"
         android:padding="10dp"/>

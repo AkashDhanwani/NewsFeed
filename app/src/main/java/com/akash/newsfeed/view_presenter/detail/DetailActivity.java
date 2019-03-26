@@ -3,7 +3,9 @@ package com.akash.newsfeed.view_presenter.detail;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.transition.Explode;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,8 +24,11 @@ public class DetailActivity extends AppCompatActivity {
     Bundle bundle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        getWindow().setAllowEnterTransitionOverlap(true);
 
         imageDetail = findViewById(R.id.imageDetail);
         titleDetail = findViewById(R.id.titleDetail);
@@ -44,5 +49,11 @@ public class DetailActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        DetailActivity.this.finishAfterTransition();
     }
 }

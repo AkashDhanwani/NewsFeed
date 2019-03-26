@@ -17,6 +17,8 @@ public class ApiResponse {
     @Expose
     private List<Article> articles = null;
 
+    public ApiResponse(){}
+
     public String getStatus() {
         return status;
     }

@@ -1,5 +1,6 @@
 package com.akash.newsfeed.view_presenter.main;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
@@ -7,7 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.Explode;
 import android.util.Log;
+import android.util.Pair;
+import android.view.View;
+import android.view.Window;
 import android.widget.Toast;
 
 import com.akash.newsfeed.MvpApp;
@@ -46,6 +51,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -76,37 +82,13 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     }
 
     @Override
-    public void openDetailActivity(Bundle bundle) {
+    public void openDetailActivity(Bundle bundle, View image, View title) {
         Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(this,
+                Pair.create(image, "image"),
+                Pair.create(title, "title"));
         intent.putExtras(bundle);
-        startActivity(intent);
+        startActivity(intent, options.toBundle());
     }
 
-//    @Override
-//    public void setList(String key, List<ApiResponse.Article> list){
-//        Gson gson = new Gson();
-//        String json = gson.toJson(list);
-//
-//        editor = sharedPreferences.edit();
-//        editor.putString(key, json);
-//        editor.apply();
-//
-//        //Toast.makeText(this, "Shared PRefer save", Toast.LENGTH_SHORT).show();
-//    }
-//
-//    @Override
-//    public List<ApiResponse.Article> getList(String key) {
-//        String offlinedata = sharedPreferences.getString(key, null);
-//        List<ApiResponse.Article> list;
-//
-//        if (offlinedata !=null){
-//            Toast.makeText(this, "Length is "+offlinedata.length(), Toast.LENGTH_SHORT).show();
-//            Gson gson = new Gson();
-//            Type listType = new TypeToken<List<ApiResponse.Article>>(){}.getType();
-//            list = gson.fromJson(offlinedata, listType);
-//            Log.d(TAG, "getting from SP and string length"+offlinedata.length()+" and list "+list.size());
-//            return list;
-//        }
-//        return null;
-//    }
 }

@@ -27,6 +27,7 @@
                 android:layout_width="120dp"
                 android:layout_height="130dp"
                 android:scaleType="centerCrop"
+                android:transitionName="image"
                 android:src="@mipmap/ic_launcher" />
 
             <LinearLayout
@@ -43,6 +44,7 @@
                     android:layout_marginEnd="10dp"
                     android:ellipsize="end"
                     android:maxLines="3"
+                    android:transitionName="title"
                     android:text="@string/testString"
                     android:textColor="@color/black_effective"
                     android:textSize="15sp" />

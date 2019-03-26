@@ -29,7 +29,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     private List<ApiResponse.Article> newsList;
     private Context context;
-   // int lastPosition = -1;
 
     @Inject
     MainMvpPresenter<MainMvpView> mMainMvpPresenter;
@@ -66,12 +65,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
         holder.description = listItem.getDescription();
         holder.urltopage = listItem.getUrl();
         holder.content = listItem.getContent();
-
-//        Animation animation = AnimationUtils.loadAnimation(context,
-//                (position > lastPosition) ? R.anim.up_from_bottom
-//                        : R.anim.down_from_top);
-//        holder.itemView.startAnimation(animation);
-//        lastPosition = position;
     }
 
     @Override
@@ -115,13 +108,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
                     bundle.putString("urltopage", urltopage);
                     bundle.putString("content", content);
 
-                    mMainMvpPresenter.onCardClicked(bundle);
-//                    Intent intent = new Intent(context, ProductInfo.class);
-//                    intent.putExtras(bundle);
-//                    context.startActivity(intent);
+                    mMainMvpPresenter.onCardClicked(bundle, imageView, titleMain);
                 }
             });
         }
     }
-
 }

@@ -6,7 +6,5 @@ import io.reactivex.Single;
 
 public interface ApiHelper {
 
-   // ApiHeader getApiHeader();
-
     Single<ApiResponse> doApiCall();
 }
